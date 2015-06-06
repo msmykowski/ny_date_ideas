@@ -19,8 +19,19 @@ class CSV_importer
         link:row[10]
       }
 
-      DateIdea.create(date_attributes)
+      new_date_idea = DateIdea.create(date_attributes)
+      tag = create_tag(row[1])
+      create_relationship(new_date_idea, tag)
     end
+  end
+
+  def self.create_tag(row_item)
+    tag_name = row_item.downcase
+    Tag.find_by(name: tag_name)? Tag.find_by(name: tag_name) : Tag.create(name: tag_name)
+  end
+
+  def self.create_relationship(date_idea, tag)
+    DateTag.create(date_idea_id: date_idea.id, tag_id: tag.id)
   end
 
 end
