@@ -24,5 +24,3 @@ class CSV_importer
   end
 
 end
-
-CSV_importer.import(date_idea_file: 'tmp/date_ideas.csv')
