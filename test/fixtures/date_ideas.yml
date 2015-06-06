@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  weather: MyString
+  time: MyString
+  cost: 1
+  date_num: MyString
+  link: MyString
+
+two:
+  title: MyString
+  weather: MyString
+  time: MyString
+  cost: 1
+  date_num: MyString
+  link: MyString
