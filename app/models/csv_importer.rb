@@ -15,6 +15,8 @@ class CSV_importer
         weather:row[2],
         time:row[3],
         cost:cost,
+        copy_one:row[6],
+        copy_two:row[7],
         date_num:row[8],
         link:row[10]
       }
