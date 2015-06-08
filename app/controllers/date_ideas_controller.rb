@@ -4,7 +4,7 @@ class DateIdeasController < ApplicationController
   end
 
   def index
-    @date_ideas = DateIdea.all.shuffle.first
-    render json: @date_ideas
+    @date_idea = DateIdea.all.shuffle.first
+    render json: @date_idea
   end
 end

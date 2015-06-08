@@ -1,3 +1,38 @@
 // Place all the styles related to the dates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@font-face {
+	font-family: 'Lato', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: #123456;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 60px;
+  text-align: center;
+  margin-top: 10%;
+}
+
+p {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+}
+
+.date-idea-container {
+  text-align: center;
+}
+
+.button-panel > a {
+  display: inline;
+  border: 2px, solid, #FFFFFF;
+  padding: 15px;
+  margin: 15px;
+}
