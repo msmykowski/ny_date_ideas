@@ -5,7 +5,7 @@ $(document).ready(function() {
     }).done(function(data) {
       $('#entry-header').remove();
       var randomColor = Math.floor(Math.random()*16777215).toString(16);
-      var colorPalette = ['#CC5f14', '#ff3e00', '#40ff99', '#14CC36'];
+      var colorPalette = ['#565656', '#FC7A57', '#68AED6', '#EDF296', '#97D5A4'];
       var randomNumber = Math.floor(Math.random()*4);
       randomColor = colorPalette[randomNumber];
       $('body').css('background-color', randomColor);
