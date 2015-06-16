@@ -5,10 +5,15 @@ $(document).ready(function() {
     }).done(function(data) {
       $('#entry-header').remove();
       var randomColor = Math.floor(Math.random()*16777215).toString(16);
-      var colorPalette = ['#CC5f14', '#ff3e00', '#40ff99', '#14CC36'];
+      var colorPalette = ['#DB6B4C', '#5186A5', '#CACE80', '#2CB281', '#982649'];
       var randomNumber = Math.floor(Math.random()*4);
       randomColor = colorPalette[randomNumber];
       $('body').css('background-color', randomColor);
+      $('.button').hover(function(){
+        $(this).css("color", randomColor);
+      }, function(){
+        $(this.css("color", '#424242'));
+      })
       var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
       var context = {
