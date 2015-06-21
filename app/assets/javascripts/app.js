@@ -21,7 +21,7 @@ $(document).ready(function() {
       $('.date-idea-container').html(html);
     }).then(function(data) {
       $('#idea-link').on('click', function() {
-        window.location.href=data.date_idea.link;
+        window.open(data.date_idea.link, '_blank');
       })
     })
   })
