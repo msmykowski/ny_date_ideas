@@ -1,9 +1,9 @@
 $(document).ready(function() {
-  $(document).on('click', '#entry-header', function() {
+  $(document).on('click', '.get-info-button', function() {
     $.ajax( {
       url: '/date_ideas',
     }).done(function(data) {
-      $('#entry-header').remove();
+      $('.get-info-button').remove();
       var randomColor = Math.floor(Math.random()*16777215).toString(16);
       var colorPalette = ['#FC7A57', '#68AED6', '#EDF296', '#97D5A4','#B2DD7A','#EABE7C', '#DB6B4C', '#5186A5', '#CACE80', '#2CB281', '#982649'];
       var randomNumber = Math.floor(Math.random()*4);

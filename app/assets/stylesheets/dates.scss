@@ -16,7 +16,7 @@ body {
 
 h1 {
   font-weight: bold;
-  font-size: 60px;
+  font-size: 80px;
   text-align: center;
   margin-top: 10%;
 }
@@ -53,4 +53,11 @@ a {
 .button:hover {
   background-color: #424242;
 	color: #B2DD7A;
+}
+
+#entry-header {
+	font-size: 100px;
+}
+#entry-header:hover {
+	text-decoration: underline;
 }
