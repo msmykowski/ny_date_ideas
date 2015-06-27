@@ -1,7 +1,7 @@
 $(document).ready(function() {
   renderPage(colorPalette);
 
-  $(document).on('click', '.get-info-button', function() {
+  $(document).on('click', '#get-info-button', function() {
     renderPage(colorPalette);
   });
 
@@ -40,24 +40,29 @@ function generateTemplate(data) {
   $('.date-idea-container').html(html);
 }
 
+function styleButton(element) {
+  element.hover(function(){
+    element.css('color', randomColor);
+    element.css('background-color', '#424242');
+  }, function() {
+    element.css('background-color', randomColor );
+    element.css('color', '#424242');
+  });
+}
+
 function generateBackgroundColor(colors) {
   randomColor = colors[Math.floor(Math.random()*10)];
   $('body').css('background-color', randomColor);
-  $(".button").hover(function(){
-    $('.button').css('color', randomColor);
-    $('.button').css('background-color', '#424242');
-  }, function() {
-    $('.button').css('background-color', randomColor);
-    $('.button').css('color', '#424242');
-  });
+  styleButton($('#get-info-button'));
+  styleButton($('#idea-link'));
 }
 
 function requestDateIdea() {
   return $.ajax( {url: '/', dataType: "json"});
 }
 
-function assignLink(data) {
-  $('#idea-link').on('click', function() {
+function assignLink(data, element) {
+  element.on('click', function() {
     window.open(data.date_idea.link, '_blank');
   });
 }
@@ -67,6 +72,6 @@ function renderPage(colors) {
     generateTemplate(data);
     generateBackgroundColor(colors);
   }).then(function(data) {
-    assignLink(data);
+    assignLink(data, $('#idea-link'));
   });
 }
