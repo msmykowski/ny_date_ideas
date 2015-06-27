@@ -43,6 +43,13 @@ function generateTemplate(data) {
 function generateBackgroundColor(colors) {
   randomColor = colors[Math.floor(Math.random()*10)];
   $('body').css('background-color', randomColor);
+  $(".button").hover(function(){
+    $('.button').css('color', randomColor);
+    $('.button').css('background-color', '#424242');
+  }, function() {
+    $('.button').css('background-color', randomColor);
+    $('.button').css('color', '#424242');
+  });
 }
 
 function requestDateIdea() {
