@@ -30,9 +30,15 @@ var colorPalette = [
 function generateTemplate(data) {
   source = $("#entry-template").html();
   template = Handlebars.compile(source);
+  var titleLength = data.date_idea.title.length
+  var firstSlice = data.date_idea.copy_one.match(data.date_idea.title).index;
+  var secondSlice = firstSlice + titleLength;
+  var copyOne_1 = data.date_idea.copy_one.slice(0,firstSlice);
+  var copyOne_2 = data.date_idea.copy_one.slice(secondSlice);
   context = {
       title: data.date_idea.title,
-      copyOne: data.date_idea.copy_one,
+      copyOne_1: copyOne_1,
+      copyOne_2: copyOne_2,
       copyTwo: data.date_idea.copy_two,
       link: data.date_idea.link
       };
