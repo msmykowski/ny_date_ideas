@@ -35,13 +35,16 @@ var colorPalette = [
 
 function matchTitle(copy_one, title) {
   if(title.includes('@')) {title.replace("@", 'at');}
+  else if (title.includes('(')) {
+    title = title.replace("(", '').replace(")", '');
+  }
   return copy_one.toLowerCase().match(title.toLowerCase());
 }
 
 function splitCopyOne(copy_one, title) {
-  dateTitle = title;
-  titleLength = dateTitle.length;
-  if(matchTitle(copy_one, dateTitle)) {
+  if(matchTitle(copy_one, title)) {
+    dateTitle = title;
+    titleLength = dateTitle.length;
     firstSlice = matchTitle(copy_one, dateTitle).index;
     secondSlice = firstSlice + titleLength;
     copyOne_1 = copy_one.slice(0,firstSlice);
