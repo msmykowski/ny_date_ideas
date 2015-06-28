@@ -11,7 +11,13 @@ var source,
     template,
     context,
     html,
-    randomColor;
+    randomColor,
+    dateTitle,
+    titleLength,
+    firstSlice,
+    secondSlice,
+    copyOne_1,
+    copyOne_2;
 
 var colorPalette = [
   '#FC7A57',
@@ -27,16 +33,31 @@ var colorPalette = [
   '#982649'
   ];
 
+function matchTitle(copy_one, title) {
+  if(title.includes('@')) {title.replace("@", 'at');}
+  return copy_one.toLowerCase().match(title.toLowerCase());
+}
+
+function splitCopyOne(copy_one, title) {
+  dateTitle = title;
+  titleLength = dateTitle.length;
+  if(matchTitle(copy_one, dateTitle)) {
+    firstSlice = matchTitle(copy_one, dateTitle).index;
+    secondSlice = firstSlice + titleLength;
+    copyOne_1 = copy_one.slice(0,firstSlice);
+    copyOne_2 = copy_one.slice(secondSlice);
+  }
+  else {
+    splitCopyOne(copy_one, title.slice(0,-1));
+  }
+}
+
 function generateTemplate(data) {
   source = $("#entry-template").html();
   template = Handlebars.compile(source);
-  var titleLength = data.date_idea.title.length
-  var firstSlice = data.date_idea.copy_one.match(data.date_idea.title).index;
-  var secondSlice = firstSlice + titleLength;
-  var copyOne_1 = data.date_idea.copy_one.slice(0,firstSlice);
-  var copyOne_2 = data.date_idea.copy_one.slice(secondSlice);
+  splitCopyOne(data.date_idea.copy_one, data.date_idea.title)
   context = {
-      title: data.date_idea.title,
+      title: dateTitle,
       copyOne_1: copyOne_1,
       copyOne_2: copyOne_2,
       copyTwo: data.date_idea.copy_two,
