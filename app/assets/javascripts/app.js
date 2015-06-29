@@ -1,11 +1,21 @@
+
+
 $(document).ready(function() {
-  renderPage(colorPalette);
+  $.ajax( {url: '/', dataType: "json"}).done(function(data) {
+    dateIdeas = data.date_ideas;
+    dateIdea = dateIdeas.pop();
+    renderPage(colorPalette, dateIdea);
+  });
+
 
   $(document).on('click', '#get-info-button', function() {
-    renderPage(colorPalette);
+    dateIdea = dateIdeas.pop();
+    renderPage(colorPalette, dateIdea);
   });
 
 });
+var dateIdeas,
+    dateIdea;
 
 var source,
     template,
@@ -58,13 +68,13 @@ function splitCopyOne(copy_one, title) {
 function generateTemplate(data) {
   source = $("#entry-template").html();
   template = Handlebars.compile(source);
-  splitCopyOne(data.date_idea.copy_one, data.date_idea.title)
+  splitCopyOne(data.copy_one, data.title)
   context = {
       title: dateTitle,
       copyOne_1: copyOne_1,
       copyOne_2: copyOne_2,
-      copyTwo: data.date_idea.copy_two,
-      link: data.date_idea.link
+      copyTwo: data.copy_two,
+      link: data.link
       };
   html = template(context);
   $('.date-idea-container').html(html);
@@ -87,8 +97,10 @@ function generateBackgroundColor(colors) {
   styleButton($('#idea-link'));
 }
 
-function requestDateIdea() {
-  return $.ajax( {url: '/', dataType: "json"});
+function getDateIdeas() {
+  $.ajax( {url: '/', dataType: "json"}).done(function(data) {
+    dateIdeas = data.date_ideas;
+  });
 }
 
 function assignLink(data, element) {
@@ -97,11 +109,8 @@ function assignLink(data, element) {
   });
 }
 
-function renderPage(colors) {
-  requestDateIdea().done(function(data) {
-    generateTemplate(data);
-    generateBackgroundColor(colors);
-  }).then(function(data) {
-    assignLink(data, $('#idea-link'));
-  });
+function renderPage(colors, data) {
+  generateTemplate(data);
+  generateBackgroundColor(colors);
+  assignLink(data, $('#idea-link'));
 }
