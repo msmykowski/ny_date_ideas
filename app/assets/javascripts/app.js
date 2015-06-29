@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
   $.ajax( {url: '/', dataType: "json"}).done(function(data) {
     dateIdeas = data.date_ideas;

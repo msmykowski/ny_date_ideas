@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module NyDateIdeas
   class Application < Rails::Application
+    include ActionController::Caching::Pages
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
 
     # Settings in config/environments/* take precedence over those specified here.
