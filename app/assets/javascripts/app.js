@@ -104,7 +104,7 @@ function getDateIdeas() {
 
 function assignLink(data, element) {
   element.on('click', function() {
-    window.open(data.date_idea.link, '_blank');
+    window.open(data.link, '_blank');
   });
 }
 
