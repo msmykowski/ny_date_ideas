@@ -12,6 +12,7 @@ $(document).ready(function() {
   });
 
 });
+
 var dateIdeas,
     dateIdea;
 
@@ -42,7 +43,7 @@ var colorPalette = [
   ];
 
 function matchTitle(copy_one, title) {
-  if(title.includes('@')) {title.replace("@", 'at');}
+  if(title.includes('@')) {title = title.replace("@", 'at');}
   else if (title.includes('(')) {
     title = title.replace("(", '').replace(")", '');
   }
