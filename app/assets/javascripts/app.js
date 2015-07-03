@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(window).load(function() {
   $.ajax( {url: '/', dataType: "json"}).done(function(data) {
     dateIdeas = data.date_ideas;
     dateIdea = dateIdeas.pop();
