@@ -1,7 +1,7 @@
 class DateIdeasController < ApplicationController
 
   def index
-    date_ideas = DateIdea.select(:title, :copy_one, :copy_two, :link).first
+    date_ideas = DateIdea.select(:title, :copy_one, :copy_two, :link).shuffle
 
     respond_to do |format|
       format.html

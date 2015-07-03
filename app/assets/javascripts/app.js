@@ -1,14 +1,13 @@
 $(document).ready(function() {
   $.ajax( {url: '/', dataType: "json"}).done(function(data) {
-    debugger;
-    dateIdea = data.date_idea;
-    // dateIdea = dateIdeas.pop();
+    dateIdeas = data.date_ideas;
+    dateIdea = dateIdeas.pop();
     renderPage(colorPalette, dateIdea);
   });
 
 
   $(document).on('click', '#get-info-button', function() {
-    // dateIdea = dateIdeas.pop();
+    dateIdea = dateIdeas.pop();
     renderPage(colorPalette, dateIdea);
   });
 
@@ -99,7 +98,7 @@ function generateBackgroundColor(colors) {
 
 function getDateIdeas() {
   $.ajax( {url: '/', dataType: "json"}).done(function(data) {
-    dateIdea = data.date_ideas;
+    dateIdeas = data.date_ideas;
   });
 }
 
