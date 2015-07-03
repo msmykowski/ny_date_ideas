@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $.ajax( {url: '/', dataType: "json"}).done(function(data) {
+  $.ajax( {url: '/date_ideas', dataType: "json"}).done(function(data) {
     dateIdeas = data.date_ideas;
     dateIdea = dateIdeas.pop();
     renderPage(colorPalette, dateIdea);
@@ -97,7 +97,7 @@ function generateBackgroundColor(colors) {
 }
 
 function getDateIdeas() {
-  $.ajax( {url: '/', dataType: "json"}).done(function(data) {
+  $.ajax( {url: '/date_ideas', dataType: "json"}).done(function(data) {
     dateIdeas = data.date_ideas;
   });
 }
