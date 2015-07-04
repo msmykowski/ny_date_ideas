@@ -1,3 +1,7 @@
 class DateIdeaSerializer < ActiveModel::Serializer
-  attributes :id, :title, :copy_one, :copy_two, :link
+  attributes  :id,
+              :copy_two,
+              :link,
+              :title_in_copy,
+              :split_copy_one
 end

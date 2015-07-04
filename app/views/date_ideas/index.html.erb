@@ -1,15 +1,27 @@
-<div class="date-idea-container"></div>
+<div class="date-idea-container">
+  <h1>YOU SHOULD...</h1>
+  <p><%= @date_idea.split_copy_one[:half_one] %><span class="idea-title"><%= @date_idea.title_in_copy  %></span><%= @date_idea.split_copy_one[:half_two] %></p>
+  <p><%= @date_idea.copy_two  %></p>
+  <div class="button-panel" id="next-idea">
+    <div class="button" id="get-info-button">
+      <a>I DON'T LIKE THAT IDEA</a>
+    </div>
+    <div class="button" id="idea-link">
+      <a>I LIKE THAT IDEA</a>
+    </div>
+  </div>
+</div>
 
 <script id="entry-template" type="text/x-handlebars-template">
-    <h1>YOU SHOULD...</h1>
-    <p>{{copyOne_1}}<span class="idea-title">{{title}}</span>{{copyOne_2}}</p>
-    <p>{{copyTwo}}</p>
-    <div class="button-panel" id="next-idea">
-      <div class="button" id="get-info-button">
-        <a>I DON'T LIKE THAT IDEA</a>
-      </div>
-      <div class="button" id="idea-link">
-        <a>I LIKE THAT IDEA</a>
-      </div>
+  <h1>YOU SHOULD...</h1>
+  <p>{{copyOne_1}}<span class="idea-title">{{title}}</span>{{copyOne_2}}</p>
+  <p>{{copyTwo}}</p>
+  <div class="button-panel" id="next-idea">
+    <div class="button" id="get-info-button">
+      <a>I DON'T LIKE THAT IDEA</a>
     </div>
+    <div class="button" id="idea-link">
+      <a>I LIKE THAT IDEA</a>
+    </div>
+  </div>
 </script>

@@ -1,4 +1,4 @@
-$(window).load(function() {
+$(document).ready(function() {
   $.ajax( {url: '/', dataType: "json"}).done(function(data) {
     dateIdeas = data.date_ideas;
     dateIdea = dateIdeas.pop();
@@ -42,36 +42,13 @@ var colorPalette = [
   '#982649'
   ];
 
-function matchTitle(copy_one, title) {
-  if(title.includes('@')) {title = title.replace("@", 'at');}
-  else if (title.includes('(')) {
-    title = title.replace("(", '').replace(")", '');
-  }
-  return copy_one.toLowerCase().match(title.toLowerCase());
-}
-
-function splitCopyOne(copy_one, title) {
-  if(matchTitle(copy_one, title)) {
-    dateTitle = title;
-    titleLength = dateTitle.length;
-    firstSlice = matchTitle(copy_one, dateTitle).index;
-    secondSlice = firstSlice + titleLength;
-    copyOne_1 = copy_one.slice(0,firstSlice);
-    copyOne_2 = copy_one.slice(secondSlice);
-  }
-  else {
-    splitCopyOne(copy_one, title.slice(0,-1));
-  }
-}
-
 function generateTemplate(data) {
   source = $("#entry-template").html();
   template = Handlebars.compile(source);
-  splitCopyOne(data.copy_one, data.title)
   context = {
-      title: dateTitle,
-      copyOne_1: copyOne_1,
-      copyOne_2: copyOne_2,
+      title: data.title_in_copy,
+      copyOne_1: data.split_copy_one.half_one,
+      copyOne_2: data.split_copy_one.half_two,
       copyTwo: data.copy_two,
       link: data.link
       };
