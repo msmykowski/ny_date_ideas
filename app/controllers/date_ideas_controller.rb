@@ -1,13 +1,12 @@
 class DateIdeasController < ApplicationController
 
-  def index
-    date_ideas = DateIdea.all.shuffle
-    @date_idea = date_ideas.pop
+  def home
+    @date_idea = DateIdea.all.shuffle.first
+  end
 
-    respond_to do |format|
-      format.html
-      format.json { render json: date_ideas }
-    end
+  def index
+    date_ideas = DateIdea.select(:title, :copy_one, :copy_two, :link).shuffle
+    render json: date_ideas
   end
 
 end

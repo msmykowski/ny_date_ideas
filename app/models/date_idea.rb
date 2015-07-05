@@ -7,8 +7,8 @@ class DateIdea < ActiveRecord::Base
   end
 
   def split_copy_one
-    index_one = copy_one.index(title_in_copy)
-    index_two = copy_one.index(title_in_copy) + title_in_copy.length
+    index_one = copy_one.downcase.index(title_in_copy.downcase)
+    index_two = index_one + title_in_copy.length
 
     {
       half_one: copy_one[0...index_one],
@@ -16,22 +16,23 @@ class DateIdea < ActiveRecord::Base
     }
   end
 
-  def copy_one_b
-    index_one = copy_one.index(title_in_copy)
-    index_two = copy_one.index(title_in_copy).title_in_copy.length
-    copy_one[index_two...-1]
-  end
-
   private
 
   def match_substring_in_string(substring, string)
-    if string.include? substring
+    substring = adjust_title(substring)
+    if string.downcase.include?(substring.downcase)
       substring
     else
       match_substring_in_string(substring[0...-1], string)
     end
   end
 
-
+  def adjust_title(substring)
+    if substring.include? '@'
+      substring.gsub(/@/, 'at')
+    else
+      substring
+    end
+  end
 
 end

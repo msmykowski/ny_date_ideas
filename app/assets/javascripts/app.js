@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $.ajax( {url: '/', dataType: "json"}).done(function(data) {
+  $.ajax( {url: '/date_ideas', dataType: "json"}).done(function(data) {
     dateIdeas = data.date_ideas;
   });
 
@@ -69,12 +69,6 @@ function generateBackgroundColor(colors) {
   $('body').css('background-color', randomColor);
   styleButton($('#get-info-button'));
   styleButton($('#idea-link'));
-}
-
-function getDateIdeas() {
-  $.ajax( {url: '/', dataType: "json"}).done(function(data) {
-    dateIdeas = data.date_ideas;
-  });
 }
 
 function assignLink(data, element) {
