@@ -3,7 +3,8 @@ class DateIdea < ActiveRecord::Base
   has_many :tags, through: :date_tags
 
   def title_in_copy
-    match_substring_in_string(title, copy_one)
+    title_in_copy = match_substring_in_string(title, copy_one)
+    title_in_copy
   end
 
   def split_copy_one
